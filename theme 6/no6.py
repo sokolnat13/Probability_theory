@@ -19,15 +19,15 @@ class TriangleDistribution(rv_continuous):
         """Функция распределения"""
         result = np.zeros_like(x)
 
-        # Для x < 0
+        # x < 0
         result[x < self.a] = 0
 
-        # Для 0 ≤ x ≤ 2
+        # 0 ≤ x ≤ 2
         mask = (x >= self.a) & (x <= self.b)
         x_masked = x[mask]
         result[mask] = 0.75 * (x_masked ** 2 - x_masked ** 3 / 3)
 
-        # Для x > 2
+        # x > 2
         result[x > self.b] = 1
 
         return result
@@ -43,20 +43,19 @@ class TriangleDistribution(rv_continuous):
         return result
 
 
-# Создаем экземпляр распределения
+
 tri_dist = TriangleDistribution()
 
-# Генерация выборки
 np.random.seed(42)
 sample = tri_dist.rvs(size=10000)
 
 print('f(x) = (3/4)*x*(2-x)')
 
-# 1. Проверка условия нормировки
+# 1. условие нормировки
 integral, error = integrate.quad(tri_dist.pdf, 0, 2)
 print(f"Интеграл плотности на [0, 2]: {integral:.6f}")
 
-# 2. Построение графиков
+# 2.графики
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4.5))
 
 # График плотности
