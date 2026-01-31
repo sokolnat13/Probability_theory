@@ -40,15 +40,15 @@ D_vybor = np.var(sample)
 
 print("LogN(μ=0.5, σ=0.8)")
 print(f"μ_ln = {mu_true}, σ_ln = {sigma_true}")
-
+print('\n')
 print(f"M(x) = exp(μ + σ²/2) = {M_teor:.4f}")
 print(f"D(x) = [exp(σ²)-1]*exp(2μ+σ²) = {D_teor:.4f}")
 print(f"σ(X) = {np.sqrt(D_teor):.4f}")
-
+print('\n')
 print(f"M(x) ≈ {M_vybor:.4f}")
 print(f"D(x) ≈ {D_vybor:.4f}")
 print(f"σ(X) ≈ {np.sqrt(D_vybor):.4f}")
-
+print('\n')
 print("Погрешность:")
 print(f"M_теор - M_выб = {abs(M_teor - M_vybor):.4f}")
 print(f"D_теор - D_выб = {abs(D_teor - D_vybor):.4f}")
